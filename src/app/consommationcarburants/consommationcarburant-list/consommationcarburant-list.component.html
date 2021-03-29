@@ -8,11 +8,11 @@
       <th>ref</th>
       <th>annee</th>
       <th>mois</th>
-<!--      <th>numero semaine</th>-->
+      <th>numero semaine</th>
       <th>litre</th>
       <th>prix</th>
-<!--      <th>description</th>-->
-<!--      <th>date consommation</th>-->
+      <th>description</th>
+      <th>date consommation</th>
       </thead>
       <tbody>
       <tr *ngFor="let c of consommationcarburants; index as i">
@@ -21,10 +21,10 @@
         <td>{{c.annee}}</td>
         <td>{{c.mois}}</td>
         <td>{{c.numeroSemaine}}</td>
-<!--        <td>{{c.litre}}</td>-->
+        <td>{{c.litre}}</td>
         <td>{{c.prix}}</td>
-<!--        <td>{{c.description}}</td>-->
-<!--        <td>{{c.dateConsommation}}</td>-->
+        <td>{{c.description}}</td>
+        <td>{{c.dateConsommation}}</td>
         <td><span (click)="delete(i)"><i class="fa fa-trash btn btn-danger"></i></span></td>
         <td><span (click)="update(i,c)"><i class="fa fa-edit btn btn-warning"></i></span></td>
       </tr>
