@@ -1,1 +1,28 @@
-<p>reparation-create works!</p>
+<div class="card">
+  <div class="card-header">Ajout de Categorie</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label>Ref</label>
+      <input type="text" class="form-control" [(ngModel)]="reparation.ref">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input type="text" class="form-control" [(ngModel)]="reparation.description">
+    </div>
+
+    <div class="form-group">
+      <label>Montant</label>
+      <input type="text" class="form-control" [(ngModel)]="reparation.montant">
+    </div>
+
+    <div class="form-group">
+      <label>DateReparation</label>
+      <input type="text" class="form-control" [(ngModel)]="reparation.datereparation">
+    </div>
+
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-block btn-outline-primary" (click)="save()">Valider</button>
+  </div>
+</div>

@@ -1,1 +1,23 @@
-<p>categorie-create works!</p>
+<div class="card">
+  <div class="card-header">Ajout de Categorie</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label>Reference</label>
+      <input type="text" class="form-control" [(ngModel)]="categorie.reference">
+    </div>
+
+    <div class="form-group">
+      <label>Nom</label>
+      <input type="text" class="form-control" [(ngModel)]="categorie.nom">
+    </div>
+
+    <div class="form-group">
+      <label>Libelle</label>
+      <input type="text" class="form-control" [(ngModel)]="categorie.libelle">
+    </div>
+
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-block btn-outline-primary" (click)="save()">Valider</button>
+  </div>
+</div>

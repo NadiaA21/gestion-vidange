@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CategorieService} from '../../controller/service/categorie.service';
+import {Categorie} from '../../controller/model/categorie.model';
 
 @Component({
   selector: 'app-categorie-create',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategorieCreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private categorieService: CategorieService) {
+  }
+
+  // tslint:disable-next-line:typedef
+  public save(){
+    this.categorieService.save();
+  }
+  get categorie(): Categorie {
+    return this.categorieService.categorie;
+  }
+
 
   ngOnInit(): void {
   }
