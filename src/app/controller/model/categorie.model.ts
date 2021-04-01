@@ -1,8 +1,8 @@
 export class Categorie {
-  public id: number;
-  public reference: string;
-  public nom: string;
-  public libelle: string;
+  public id: number | undefined;
+  public reference: string | undefined;
+  public nom: string | undefined;
+  public libelle: string | undefined;
 
 
 }

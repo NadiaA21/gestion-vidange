@@ -1,7 +1,7 @@
 export class Reparation {
-  public id: number;
-  public ref: string;
-  public description: string;
-  public montant: number;
-  public datereparation: string;
+  public id: number | undefined;
+  public ref: string | undefined;
+  public description: string | undefined;
+  public montant: number | undefined;
+  public datereparation: number | undefined;
 }

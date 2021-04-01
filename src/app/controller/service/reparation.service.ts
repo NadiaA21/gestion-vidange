@@ -6,14 +6,19 @@ import {Reparation} from '../model/reparation.model';
 })
 export class ReparationService {
 
-  private _reparation: Reparation;
-  private _reparations : Array<Reparation>;
-  private _index: number;
+  // tslint:disable-next-line:new-parens variable-name
+  private _reparation: Reparation = new Reparation;
+  // tslint:disable-next-line:variable-name
+  private _reparations: Array<Reparation> = [];
+  // tslint:disable-next-line:variable-name
+   _index = 0;
 
+  // tslint:disable-next-line:typedef
   public update(index: number, reparation: Reparation) {
     this.reparation = this.clone(reparation);
     this._index = index;
   }
+  // tslint:disable-next-line:typedef
   public save() {
     if (this.reparation.id == null) {
       this.reparation.id = this.reparations.length + 1;
@@ -21,6 +26,7 @@ export class ReparationService {
     } else{
       this.reparations[this._index] = this.clone(this.reparation);
     }
+    // @ts-ignore
     this.reparation = null;
   }
 
@@ -32,7 +38,7 @@ export class ReparationService {
       myReparation.ref = 'c-' + _i;
       myReparation.description = 'd' + _i;
       myReparation.montant =  + _i;
-      myReparation.datereparation = '2020' + _i;
+      myReparation.datereparation = 2020 + _i;
       this.reparations.push(myReparation);
 
 

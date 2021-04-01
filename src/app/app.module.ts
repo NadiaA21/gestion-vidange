@@ -63,7 +63,7 @@ import { TypevidangeListComponent } from './typevidanges/typevidange-list/typevi
     FormsModule
   ],
   providers: [],
-  bootstrap: [ConsommationcarburantsComponent]
+  bootstrap: [ReparationsComponent]
 })
 export class AppModule {
 }

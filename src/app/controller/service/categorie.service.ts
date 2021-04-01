@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Categorie} from '../model/categorie.model';
 
 @Injectable({
@@ -6,12 +6,15 @@ import {Categorie} from '../model/categorie.model';
 })
 export class CategorieService {
 
+
+  // tslint:disable-next-line:new-parens variable-name
+  private _categorie: Categorie = new Categorie;
+
   // tslint:disable-next-line:variable-name
-  private _categorie: Categorie;
+  private _categories: Array<Categorie> = [];
   // tslint:disable-next-line:variable-name
-  private _categories: Array<Categorie>;
-  // tslint:disable-next-line:variable-name
-  private _index: number;
+  _index = 0;
+
   // tslint:disable-next-line:typedef
   public update(index: number, categorie: Categorie) {
     this.categorie = this.clone(categorie);
@@ -23,11 +26,13 @@ export class CategorieService {
     if (this.categorie.id == null) {
       this.categorie.id = this.categories.length + 1;
       this.categories.push(this.clone(this.categorie));
-    } else{
+    } else {
       this.categories[this._index] = this.clone(this.categorie);
     }
+    // @ts-ignore
     this.categorie = null;
   }
+
   constructor() {
   }
 

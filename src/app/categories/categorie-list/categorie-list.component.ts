@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Categorie} from '../../controller/model/categorie.model';
 import {CategorieService} from '../../controller/service/categorie.service';
 
@@ -7,16 +7,18 @@ import {CategorieService} from '../../controller/service/categorie.service';
   templateUrl: './categorie-list.component.html',
   styleUrls: ['./categorie-list.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategorieListComponent implements OnInit {
 
 // tslint:disable-next-line:typedef
 
   // tslint:disable-next-line:typedef
-  public delete(index: number){
-    this.categories.splice(index,  1);
+  public delete(index: number) {
+    this.categories.splice(index, 1);
 
 // tslint:disable-next-line:typedef
-  }public update(index: number, categorie: Categorie){
+  }
+
+  public update(index: number, categorie: Categorie) {
     this.categorieService.update(index, categorie);
 
   }
@@ -24,7 +26,10 @@ export class CategoriesComponent implements OnInit {
   get categories(): Array<Categorie> {
     return this.categorieService.categories;
   }
-  constructor(private categorieService: CategorieService) { }
+
+  constructor(private categorieService: CategorieService) {
+  }
+
   ngOnInit(): void {
     this.categorieService.init();
   }
