@@ -28,6 +28,7 @@ import { VidangeListComponent } from './vidanges/vidange-list/vidange-list.compo
 import { TypevidangesComponent } from './typevidanges/typevidanges.component';
 import { TypevidangeCreateComponent } from './typevidanges/typevidange-create/typevidange-create.component';
 import { TypevidangeListComponent } from './typevidanges/typevidange-list/typevidange-list.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -60,10 +61,11 @@ import { TypevidangeListComponent } from './typevidanges/typevidange-list/typevi
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [ReparationsComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

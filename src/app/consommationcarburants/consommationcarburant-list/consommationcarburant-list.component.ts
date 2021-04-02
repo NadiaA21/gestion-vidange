@@ -23,7 +23,7 @@ export class ConsommationcarburantListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.consommationcarburantService.init();
+    this.consommationcarburantService.findAll();
   }
 
 }

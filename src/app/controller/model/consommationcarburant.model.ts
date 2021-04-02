@@ -7,6 +7,6 @@ export class Consommationcarburant {
   public litre: number | undefined;
   public prix: number | undefined;
   public description: string | undefined;
-  public dateConsommation: number | undefined;
-
+  public dateConsommationCarburant: Date | undefined;
+  public voiture: number | undefined;
 }

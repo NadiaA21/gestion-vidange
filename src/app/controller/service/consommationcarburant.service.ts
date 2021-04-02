@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Consommationcarburant} from '../model/consommationcarburant.model';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConsommationcarburantService {
-
+  private urlBase = 'http://localhost:8036';
+  private url = '/consommationCarburant/consommationCarburant';
   // tslint:disable-next-line:new-parens variable-name
   private _consommationcarburant: Consommationcarburant = new Consommationcarburant;
 
@@ -13,6 +15,7 @@ export class ConsommationcarburantService {
   private _consommationcarburants: Array<Consommationcarburant> = [];
   // tslint:disable-next-line:variable-name
   _index = 0;
+  // tslint:disable-next-line:typedef
   public update(index: number, consommation: Consommationcarburant) {
     this.consommationcarburant = this.clone(consommation);
     this._index = index;
@@ -20,19 +23,43 @@ export class ConsommationcarburantService {
 
   // tslint:disable-next-line:typedef
   public save(){
-    if(this.consommationcarburant.id == null){
-      this.consommationcarburant.id = this.consommationcarburants.length + 1;
-      this.consommationcarburants.push(this.clone(this.consommationcarburant));
+    alert('hello');
+    if (this.consommationcarburant.id == null){
+      this.http.post(this.urlBase + this.url + '/', this.consommationcarburant).subscribe(
+        data => {
+           if (data == -2){
+            alert('Voiture n\'existe pas !' + data);
+          }else  if (data == -1){
+            alert('consommation existe deja !' + data);
+          }else if (data == 1) {
+             alert('2');
+             this.consommationcarburants.push(this.clone(this.consommationcarburant));
+             this.findAll();
+          }
+        }
+      );
+
     }
     else{
+      alert('3');
       this.consommationcarburants[this._index] = this.clone(this.consommationcarburant);
     }
-    // @ts-ignore
-    this.consommationcarburant = null;
+    // // @ts-ignore
+    // this.consommationcarburant = null;
   }
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
+  // tslint:disable-next-line:typedef
+  public findAll(){
+    this.http.get<Array<Consommationcarburant>>(this.urlBase + this.url + '/').subscribe(
+      data => {
+        this.consommationcarburants = data;
+      } , error => {
+        alert('error');
+    }
+    );
+  }
 
   get consommationcarburant(): Consommationcarburant {
     if (this._consommationcarburant == null){
@@ -57,26 +84,10 @@ export class ConsommationcarburantService {
   }
 
   // tslint:disable-next-line:typedef
-  public init(){
-    for (let _i = 1; _i <= 4; _i++){
-      let myConsommation = new Consommationcarburant();
-      myConsommation.id = _i;
-      myConsommation.ref = 'c-' + _i;
-      myConsommation.annee = 2016 + _i;
-      myConsommation.description = 'description' + _i;
-      myConsommation.litre = 100 * _i;
-      myConsommation.numeroSemaine = 10 + _i;
-      myConsommation.prix = 100 * _i;
-      myConsommation.mois = 5 + _i;
-      myConsommation.dateConsommation = 2010 + _i;
-      this.consommationcarburants.push(myConsommation);
-    }
-  }
-
   private clone(consommationcarburant: Consommationcarburant) {
     let myClone = new Consommationcarburant();
     myClone.id = consommationcarburant.id;
-    myClone.dateConsommation = consommationcarburant.dateConsommation;
+    myClone.dateConsommationCarburant = consommationcarburant.dateConsommationCarburant;
     myClone.mois = consommationcarburant.mois;
     myClone.prix = consommationcarburant.prix;
     myClone.numeroSemaine = consommationcarburant.numeroSemaine;
@@ -84,6 +95,7 @@ export class ConsommationcarburantService {
     myClone.description = consommationcarburant.description;
     myClone.annee = consommationcarburant.annee;
     myClone.ref = consommationcarburant.ref;
+    myClone.voiture = consommationcarburant.voiture;
     return myClone;
   }
 

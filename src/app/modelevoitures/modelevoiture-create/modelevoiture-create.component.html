@@ -1,1 +1,20 @@
-<p>modelevoiture-create works!</p>
+<div class="card">
+  <div class="card-header">Ajout de Modele du Voiture</div>
+  <div class="card-body">
+    <div class="from-group">
+      <div class="form-group">
+        <label>Code</label> <input type="number" class="form-control" [(ngModel)]="modelevoiture.code">
+      </div>
+      <div class="form-group">
+        <label>Libelle</label> <input type="text" class="form-control" [(ngModel)]="modelevoiture.libelle">
+
+      </div>
+      <div class="form-group">
+        <label>Marque</label> <input type="text" class="form-control" [(ngModel)]="modelevoiture.marque">
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-block btn-outline-primary" (click)="save()">Valider</button>
+  </div>
+</div>

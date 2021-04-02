@@ -6,7 +6,7 @@
         <label>Ref</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburant.ref">
       </div>
         <div class="form-group">
-          <label>Date</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburant.dateConsommation">
+          <label>Date</label> <input type="date" class="form-control" [(ngModel)]="consommationcarburant.dateConsommationCarburant">
       </div>
       <div class="form-group">
         <label>Description</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburant.description">
@@ -30,7 +30,9 @@
       </div>
       <div class="form-group">
         <label>Prix</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburant.prix">
-
+      </div>
+      <div class="form-group">
+        <label>Voiture</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburant.voiture">
       </div>
     </div>
   </div>

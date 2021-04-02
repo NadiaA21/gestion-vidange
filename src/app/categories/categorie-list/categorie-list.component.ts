@@ -15,7 +15,6 @@ export class CategorieListComponent implements OnInit {
   public delete(index: number) {
     this.categories.splice(index, 1);
 
-// tslint:disable-next-line:typedef
   }
 
   public update(index: number, categorie: Categorie) {

@@ -1,1 +1,27 @@
-<p>modelevoiture-list works!</p>
+<div class="card">
+  <div class="card-header">Listes des Modeles</div>
+  <div class="card-body">
+    <table class="table  table-hover ">
+      <thead>
+
+      <th>ID</th>
+      <th>Code</th>
+      <th>Libelle</th>
+      <th>Marque</th>
+
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of modelevoitures; index as i">
+        <td>{{c.id}}</td>
+        <td>{{c.code}}</td>
+        <td>{{c.libelle}}</td>
+        <td>{{c.marque}}</td>
+        <td><span (click)="delete(i)"><i class="fa fa-trash btn btn-danger"></i></span></td>
+        <td><span (click)="update(i,c)"><i class="fa fa-edit btn btn-warning"></i></span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--  <div class="card-footer"></div>-->
+</div>
+

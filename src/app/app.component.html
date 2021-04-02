@@ -1,20 +1,36 @@
 <div class="container">
-  <div class="col-md-6">
-    <app-consommationcarburant-create></app-consommationcarburant-create>
-    <app-modelevoiture-create></app-modelevoiture-create>
-    <app-voiture-create></app-voiture-create>
-    <app-categorie-create></app-categorie-create>
-    <app-typecarburant-create></app-typecarburant-create>
-    <app-vidange-create></app-vidange-create>
-    <app-typevidange-create></app-typevidange-create>
+
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark col-md-12">
+    <a id="nav-bar" href="" class="navbar-brand">Gestion Park</a>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="" class="nav-link">Voiture</a>
+      </li>
+      <li class="nav-item">
+        <a href="consommationcarburants/consommationcarburants.component.html" class="nav-link">
+          Consommation Carburant</a>
+      </li>
+      <li class="nav-item"><a href="" class="nav-link">Vidange</a></li>
+      <li class="nav-item"><a href="reparations/reparations.component.html" class="nav-link">Reparation</a></li>
+      <li class="nav-item"><a href="" class="nav-link">Type Vidange</a></li>
+      <li class="nav-item"><a href="" class="nav-link">carburant</a></li>
+      <li class="nav-item"><a href="" class="nav-link">Type carburant</a></li>
+      <li class="nav-item">
+        <a href="modelevoitures/modelevoitures.component.html" class="nav-link">Modele</a>
+      </li>
+    </ul>
+  </nav>
+  <div  id="div-modele" class=" div-container col-md-12">
+    <app-modelevoitures class="m-lg-5"></app-modelevoitures>
   </div>
-  <div class="col-md-6">
-    <app-consommationcarburant-list></app-consommationcarburant-list>
-    <app-modelevoiture-list></app-modelevoiture-list>
-    <app-voiture-list></app-voiture-list>
-    <app-categorie-list></app-categorie-list>
-    <app-typecarburant-list></app-typecarburant-list>
-    <app-vidange-list></app-vidange-list>
-    <app-typevidange-list></app-typevidange-list>
+  <div>
+    <div id="div-consommation" class="div-container col-md-12">
+      <app-consommationcarburants class="ml-lg-5"></app-consommationcarburants></div>
   </div>
-</div>
+
+
+<!--<div><app-categories></app-categories></div>-->
+<!--  <div><app-reparations></app-reparations></div>-->
+
+  </div>
+
