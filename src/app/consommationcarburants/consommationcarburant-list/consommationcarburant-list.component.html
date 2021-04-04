@@ -13,7 +13,7 @@
       <th>prix</th>
       <th>description</th>
       <th>date consommation</th>
-      <th>Voiture</th>
+      <th> Id Voiture</th>
       <th>Action</th>
       </thead>
       <tbody>
@@ -27,7 +27,7 @@
         <td>{{c.prix}}</td>
         <td>{{c.description}}</td>
         <td>{{c.dateConsommationCarburant}}</td>
-        <td>{{c.voiture}}</td>
+        <td>{{c.voiture.id}}</td>
         <td><span (click)="delete(i)"><i class="fa fa-trash btn btn-danger"></i></span></td>
         <td><span (click)="update(i,c)"><i class="fa fa-edit btn btn-warning"></i></span></td>
       </tr>

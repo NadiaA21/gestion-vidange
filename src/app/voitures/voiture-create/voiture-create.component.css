@@ -1,0 +1,10 @@
+.form-group{
+  width: auto;
+  text-align: center;
+}
+.consommatiom{
+  background-color: aquamarine;
+  width: auto;
+  height: 20px;
+  float: right;
+}

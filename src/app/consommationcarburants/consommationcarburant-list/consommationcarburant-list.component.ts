@@ -16,7 +16,7 @@ export class ConsommationcarburantListComponent implements OnInit {
   constructor(private consommationcarburantService: ConsommationcarburantService) {
   }
   public delete(index: number){
-    this.consommationcarburants.splice(index,1);
+    this.consommationcarburants.splice(index, 1);
   }
   public update(index: number, consommation: Consommationcarburant){
     this.consommationcarburantService.update(index, consommation);

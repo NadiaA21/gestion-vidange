@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Consommationcarburant} from '../model/consommationcarburant.model';
 import {HttpClient} from '@angular/common/http';
+import {Modelevoiture} from '../model/modelevoiture.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,26 +24,25 @@ export class ConsommationcarburantService {
 
   // tslint:disable-next-line:typedef
   public save(){
-    alert('hello');
+    alert('in save');
     if (this.consommationcarburant.id == null){
-      this.http.post(this.urlBase + this.url + '/', this.consommationcarburant).subscribe(
+       alert('id=null');
+       this.http.post(this.urlBase + this.url + '/', this.consommationcarburant).subscribe(
         data => {
-           if (data == -2){
-            alert('Voiture n\'existe pas !' + data);
-          }else  if (data == -1){
+          if (data == -1){
             alert('consommation existe deja !' + data);
           }else if (data == 1) {
-             alert('2');
              this.consommationcarburants.push(this.clone(this.consommationcarburant));
              this.findAll();
           }
-        }
-      );
-
-    }
-    else{
-      alert('3');
+        });
+    } else{
+      alert('id != null');
+      this.http.post(this.urlBase + this.url + '/', this.consommationcarburant).subscribe(
+        data => {
       this.consommationcarburants[this._index] = this.clone(this.consommationcarburant);
+      this.findAll();
+        });
     }
     // // @ts-ignore
     // this.consommationcarburant = null;
@@ -58,6 +58,30 @@ export class ConsommationcarburantService {
       } , error => {
         alert('error');
     }
+    );
+  }
+  // tslint:disable-next-line:typedef
+  public findByVoitureId(id: number){
+    this.http.get <Array<Consommationcarburant>>(this.urlBase + this.url + '/idvoiture/idvoiture').subscribe(
+      data => {
+        console.log(data);
+        this.consommationcarburants = data;
+      } , error => {
+        console.log( error);
+      }
+    );
+  }
+
+
+  // tslint:disable-next-line:typedef
+  public findByVoitureRef(ref: string){
+    alert(ref);
+    this.http.get<Array<Consommationcarburant>>(this.urlBase + this.url + '/VoitureRef/VoitureRef').subscribe(
+      data => {
+        this.consommationcarburants = data;
+      } , error => {
+        console.log( error);
+      }
     );
   }
 
@@ -81,6 +105,18 @@ export class ConsommationcarburantService {
 
   set consommationcarburants(value: Array<Consommationcarburant>) {
     this._consommationcarburants = value;
+  }
+
+  // tslint:disable-next-line:typedef
+  public delete(index: number){
+    this.http.get<Array<Consommationcarburant>>(this.urlBase + this.url + '/').subscribe(
+      data => {
+        this.consommationcarburants.splice(index, 1);
+        this.findAll();
+      } , error => {
+        alert('error' + error);
+      }
+    );
   }
 
   // tslint:disable-next-line:typedef
