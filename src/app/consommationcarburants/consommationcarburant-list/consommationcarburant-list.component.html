@@ -2,7 +2,7 @@
   <div class="card-header">Listes des consommations</div>
   <div class="card-body">
     <table class="table  table-hover ">
-      <thead>
+      <thead class="btn-dark">
 
       <th>Id</th>
       <th>ref</th>
@@ -13,7 +13,7 @@
       <th>prix</th>
       <th>description</th>
       <th>date consommation</th>
-      <th> Id Voiture</th>
+      <th> Ref Voiture</th>
       <th>Action</th>
       </thead>
       <tbody>
@@ -27,8 +27,8 @@
         <td>{{c.prix}}</td>
         <td>{{c.description}}</td>
         <td>{{c.dateConsommationCarburant}}</td>
-        <td>{{c.voiture.id}}</td>
-        <td><span (click)="delete(i)"><i class="fa fa-trash btn btn-danger"></i></span></td>
+        <td>{{c.voiture.ref}}</td>
+        <td><span (click)="deleteByRef(c)"><i class="fa fa-trash btn btn-danger"></i></span></td>
         <td><span (click)="update(i,c)"><i class="fa fa-edit btn btn-warning"></i></span></td>
       </tr>
       </tbody>

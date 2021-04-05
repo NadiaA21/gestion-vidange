@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Consommationcarburant} from '../model/consommationcarburant.model';
 import {HttpClient} from '@angular/common/http';
-import {Modelevoiture} from '../model/modelevoiture.model';
+import {Voiture} from '../model/voiture.model';
+import {VoitureService} from './voiture.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class ConsommationcarburantService {
   private _consommationcarburants: Array<Consommationcarburant> = [];
   // tslint:disable-next-line:variable-name
   _index = 0;
+  // private voitureService: VoitureService = new VoitureService(this.http);
+
   // tslint:disable-next-line:typedef
   public update(index: number, consommation: Consommationcarburant) {
     this.consommationcarburant = this.clone(consommation);
@@ -24,21 +27,20 @@ export class ConsommationcarburantService {
 
   // tslint:disable-next-line:typedef
   public save(){
-    alert('in save');
     if (this.consommationcarburant.id == null){
-       alert('id=null');
-       this.http.post(this.urlBase + this.url + '/', this.consommationcarburant).subscribe(
+       this.http.post<number>(this.urlBase + this.url + '/', this.consommationcarburant).subscribe(
         data => {
           if (data == -1){
             alert('consommation existe deja !' + data);
           }else if (data == 1) {
-             this.consommationcarburants.push(this.clone(this.consommationcarburant));
-             this.findAll();
+            this.consommationcarburants.push(this.clone(this.consommationcarburant));
+            this.findAll();
+          }else if (data == 0){
+            alert('data = 0');
           }
         });
     } else{
-      alert('id != null');
-      this.http.post(this.urlBase + this.url + '/', this.consommationcarburant).subscribe(
+      this.http.post<number>(this.urlBase + this.url + '/', this.consommationcarburant).subscribe(
         data => {
       this.consommationcarburants[this._index] = this.clone(this.consommationcarburant);
       this.findAll();
@@ -50,25 +52,22 @@ export class ConsommationcarburantService {
 
   constructor(private http: HttpClient) { }
 
-  // tslint:disable-next-line:typedef
+
   public findAll(){
     this.http.get<Array<Consommationcarburant>>(this.urlBase + this.url + '/').subscribe(
       data => {
         this.consommationcarburants = data;
       } , error => {
-        alert('error');
+        alert('error in find All');
     }
     );
   }
   // tslint:disable-next-line:typedef
-  public findByVoitureId(id: number){
-    this.http.get <Array<Consommationcarburant>>(this.urlBase + this.url + '/idvoiture/idvoiture').subscribe(
+  public findByVoitureId(voiture: Voiture){
+    this.http.get <Array<Consommationcarburant>>(this.urlBase + this.url + '/idvoiture/ ' + voiture.id).subscribe(
       data => {
-        console.log(data);
         this.consommationcarburants = data;
-      } , error => {
-        console.log( error);
-      }
+      } , error => {}
     );
   }
 
@@ -76,7 +75,7 @@ export class ConsommationcarburantService {
   // tslint:disable-next-line:typedef
   public findByVoitureRef(ref: string){
     alert(ref);
-    this.http.get<Array<Consommationcarburant>>(this.urlBase + this.url + '/VoitureRef/VoitureRef').subscribe(
+    this.http.get<Array<Consommationcarburant>>(this.urlBase + this.url + '/VoitureRef/').subscribe(
       data => {
         this.consommationcarburants = data;
       } , error => {
@@ -108,19 +107,20 @@ export class ConsommationcarburantService {
   }
 
   // tslint:disable-next-line:typedef
-  public delete(index: number){
-    this.http.get<Array<Consommationcarburant>>(this.urlBase + this.url + '/').subscribe(
+  public deleteByRef(consommation: Consommationcarburant){
+    this.http.delete<Array<Consommationcarburant>>(this.urlBase + this.url + '/ref/' + consommation.ref).subscribe(
       data => {
-        this.consommationcarburants.splice(index, 1);
+        this.deleteByRef(consommation);
         this.findAll();
       } , error => {
         alert('error' + error);
+        console.log(this.http.delete<Array<Consommationcarburant>>(this.urlBase + this.url + '/ref/' + consommation.ref));
       }
     );
   }
 
   // tslint:disable-next-line:typedef
-  private clone(consommationcarburant: Consommationcarburant) {
+  clone(consommationcarburant: Consommationcarburant) {
     let myClone = new Consommationcarburant();
     myClone.id = consommationcarburant.id;
     myClone.dateConsommationCarburant = consommationcarburant.dateConsommationCarburant;

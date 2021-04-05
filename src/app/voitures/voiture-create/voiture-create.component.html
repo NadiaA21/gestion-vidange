@@ -1,115 +1,75 @@
 <div class="card">
-  <div class="card-header">Ajout de Voiture</div>
-  <div class="card-body">
-    <div class="from-group">
+  <div class="card-header ">Ajout de Voiture</div>
+  <div class="card-body ">
+    <div class="from-group ">
 <!--      <div class="form-group">-->
 <!--        <label>Id</label> <input type="number" class="form-control" [(ngModel)]="voiture.id">-->
 <!--      </div>-->
       <div class="form-group">
-        <label>Ref</label> <input type="text" class="form-control" [(ngModel)]="voiture.ref">
+        <label>Ref</label> <input id="cccc45" type="text" class="form-control btn-outline-info" [(ngModel)]="voiture.ref"  (focusout)="getValue()" >
 
       </div>
       <div class="form-group">
-        <label>Matricule</label> <input type="text" class="form-control" [(ngModel)]="voiture.matricule">
+        <label>Matricule</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="voiture.matricule">
       </div>
       <div class="form-group">
-        <label>model</label> <input type="number" class="form-control" [(ngModel)]="voiture.model.id">
+        <label>modele Code</label> <input type="number" class="form-control btn-outline-info" [(ngModel)]="voiture.model.code">
       </div><div class="form-group">
-        <label>DateDernierVidange</label> <input type="text" class="form-control" [(ngModel)]="voiture.dateDernierVidange">
+        <label>DateDernierVidange</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="voiture.dateDernierVidange">
       </div>
       <div class="form-group">
-        <label>typeCarburant</label> <input type="number" class="form-control" [(ngModel)]="voiture.typeCarburant.id">
+        <label>typeCarburant Code</label> <input type="number" class="form-control btn-outline-info" [(ngModel)]="voiture.typeCarburant.code">
       </div>
+<!--      <div class="form-group">-->
+<!--        <button class="btn btn-block btn-outline-secondary">Ajout de Consommation carburant</button>-->
+<!--      </div>-->
 
-      <div class="form-group">
-<!--        <app-consommationcarburant-create></app-consommationcarburant-create>-->
+
+
         <div class="card">
           <div class="card-header">Ajout de Consommation carburant</div>
-          <div class="card-body">
+
+          <div class="card-body ">
             <div class="from-group">
               <div class="form-group">
-                <label>Ref</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.ref">
+                <label>Ref</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="consommationcarburant.ref">
               </div>
               <div class="form-group">
-                <label>Date</label> <input type="date" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.dateConsommationCarburant ">
+                <label>Date</label> <input type="date" class="form-control btn-outline-info" [(ngModel)]="consommationcarburant.dateConsommationCarburant">
               </div>
               <div class="form-group">
-                <label>Description</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.description">
+                <label>Description</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="consommationcarburant.description">
 
               </div>
               <div class="form-group">
-                <label>Litre</label> <input type="number" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.litre">
+                <label>Litre</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="consommationcarburant.litre">
 
               </div>
               <div class="form-group">
-                <label>Annee</label> <input type="number" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.annee">
+                <label>Annee</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="consommationcarburant.annee">
 
               </div>
               <div class="form-group">
-                <label>Mois</label> <input type="number" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.mois">
+                <label>Mois</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="consommationcarburant.mois">
 
               </div>
               <div class="form-group">
-                <label>Numero de semaine</label> <input type="number" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.numeroSemaine">
+                <label>Numero de semaine</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="consommationcarburant.numeroSemaine">
 
               </div>
               <div class="form-group">
-                <label>Prix</label> <input type="number" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.prix">
+                <label>Prix</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="consommationcarburant.prix">
               </div>
-              <div class="form-group">
-                <label> ID Voiture</label> <input type="number" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.voiture.id">
+              <div class="form-group btn-outline-dark" >
+                voitureRef: {{consommationcarburant.voiture.ref}}
               </div>
             </div>
           </div>
           <div class="card-footer">
-            <button class="btn btn-block btn-outline-primary" (click)="consommationcarburantService.save()">Valider</button>
+            <button class="btn btn-block btn-lg btn-outline-dark" (click)="addConsommation()">+</button>
           </div>
+
         </div>
-
-      </div>
-
-<!--        <div class="card">-->
-<!--          <div class="card-header">Ajout de Consommation carburant</div>-->
-<!--          <div class="card-body">-->
-<!--            <div class="from-group">-->
-<!--              <div class="form-group">-->
-<!--                <label>Ref</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.ref">-->
-<!--              </div>-->
-<!--              <div class="form-group">-->
-<!--                <label>Date</label> <input type="date" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.dateConsommationCarburant">-->
-<!--              </div>-->
-<!--              <div class="form-group">-->
-<!--                <label>Description</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.description">-->
-
-<!--              </div>-->
-<!--              <div class="form-group">-->
-<!--                <label>Litre</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.litre">-->
-
-<!--              </div>-->
-<!--              <div class="form-group">-->
-<!--                <label>Annee</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.annee">-->
-
-<!--              </div>-->
-<!--              <div class="form-group">-->
-<!--                <label>Mois</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.mois">-->
-
-<!--              </div>-->
-<!--              <div class="form-group">-->
-<!--                <label>Numero de semaine</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.numeroSemaine">-->
-
-<!--              </div>-->
-<!--              <div class="form-group">-->
-<!--                <label>Prix</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.prix">-->
-<!--              </div>-->
-<!--              <div class="form-group" >-->
-<!--                <label> ID Voiture</label> <input type="number" class="form-control" [(ngModel)]="consommationcarburantService.consommationcarburant.voiture.id">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="card-footer">-->
-<!--            <button class="btn btn-block btn-lg btn-outline-dark" (click)="consommationcarburantService.save()">+</button>-->
-<!--          </div>-->
-<!--        </div>-->
 
 
     </div>

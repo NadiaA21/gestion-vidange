@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Voiture} from '../model/voiture.model';
+import {ConsommationcarburantService} from './consommationcarburant.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class VoitureService {
   private _voitures: Array<Voiture> = [];
   // tslint:disable-next-line:variable-name
   _index = 0;
-
+  public consommationcarburantService: ConsommationcarburantService = new ConsommationcarburantService(this.http);
   public update(index: number, voiture: Voiture) {
     this.voiture = this.clone(voiture);
     this._index = index;
@@ -21,7 +22,6 @@ export class VoitureService {
     if (this.voiture.id == null){
       this.http.post(this.urlBase + this.url + '/', this.voiture).subscribe(
         data => {
-          alert('data');
           if (data == -1) {
             alert(' voiture existe deja !' + data);
           }else if (data == -2){
@@ -42,11 +42,12 @@ export class VoitureService {
 
         DATA => { this.voitures[this._index] = this.clone(this.voiture);
                   this.findAll();
+                  alert(DATA);
         });
     }
 
-    // @ts-ignore
-    this.voiture = null;
+    // // @ts-ignore
+    // this.voiture = null;
   }
 
   constructor(private http: HttpClient) { }
@@ -62,13 +63,15 @@ export class VoitureService {
     );
   }
   // tslint:disable-next-line:typedef
-  public delete(index: number){
-    this.http.get<Array<Voiture>>(this.urlBase + this.url + '/').subscribe(
+  public deleteByRef(voiture: Voiture){
+    this.http.delete(this.urlBase + this.url + '/ref/' + voiture.ref).subscribe(
       data => {
-        this.voitures.splice(index, 1);
+        console.log(this.http.delete(this.urlBase + this.url + '/ref/' + voiture.ref));
+        this.deleteByRef(voiture);
         this.findAll();
       } , error => {
         alert('error' + error);
+        console.log(this.http.delete(this.urlBase + this.url + '/ref/' + voiture.ref));
       }
     );
   }

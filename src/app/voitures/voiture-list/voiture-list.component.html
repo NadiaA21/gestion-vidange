@@ -1,15 +1,15 @@
 <div class="card">
   <div class="card-header">Listes des Voitures</div>
   <div class="card-body">
-    <table class="table  table-hover ">
-      <thead>
+    <table id="montable" class="table  table-hover ">
+      <thead CLASS="btn-dark">
 
-      <th>ID</th>
+      <th CLASS="">ID</th>
       <th>Reference</th>
       <th>matricule</th>
       <th>Date vidange</th>
-      <th>Modele</th>
-      <th>TypeCarburant</th>
+      <th>Modele Code</th>
+      <th>TypeCarburant Code</th>
       <th>Action</th>
       <th></th>
 
@@ -20,9 +20,9 @@
         <td>{{c.ref}}</td>
         <td>{{c.matricule}}</td>
         <td>{{c.dateDernierVidange}}</td>
-        <td>{{c.model.id}}</td>
-        <td>{{c.typeCarburant.id}}</td>
-        <td><span (click)="delete(i)"><i class="fa fa-trash btn btn-danger btn-lg"></i></span></td>
+        <td>{{c.model.code}}</td>
+        <td>{{c.typeCarburant.code}}</td>
+        <td><span (click)="deleteByRef(c)"><i class="fa fa-trash btn btn-danger btn-lg"></i></span></td>
         <td><span (click)="update(i,c)"><i class="fa fa-edit btn btn-warning btn-lg"></i></span></td>
       </tr>
       </tbody>
@@ -31,66 +31,41 @@
   </div>
 
   <div class="h5"><span>Liste des Consommation de chaque voiture</span>
-    <input id="cccc45" class="serch " type="search" placeholder="Enter ID Voiture" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit"  (click)="consommationcarburantService.findByVoitureId(getValue())">Search</button>
+    <input id="cccc45" class="serch " type="search" placeholder="Enter ID Voiture" aria-label="Search" [(ngModel)]="voiture.id">
+    <button class="btn btn-outline-success" type="submit" (click)="findByVoitureId(voiture)" >Search</button>
   </div>
-  <div class="card">
-    <div class="card-header">Listes des consommations</div>
-    <div class="card-body"><app-consommationcarburant-list></app-consommationcarburant-list></div>
+<!--  <app-consommationcarburant-list></app-consommationcarburant-list>-->
 
-<!--    <div class="card-body">-->
-<!--      <table class="table  table-hover ">-->
-<!--        <thead>-->
+    <div class="card-body">
+      <table class="table  table-hover ">
+        <thead CLASS="btn-dark">
 
-<!--        <th>Id</th>-->
-<!--        <th>ref</th>-->
-<!--        <th>annee</th>-->
-<!--        <th>mois</th>-->
-<!--        <th>numero semaine</th>-->
-<!--        <th>litre</th>-->
-<!--        <th>prix</th>-->
-<!--        <th>description</th>-->
-<!--        <th>date consommation</th>-->
-<!--        <th> Id Voiture</th>-->
-<!--        <th>Action</th>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr *ngFor="let c2 of consommationcarburantService.consommationcarburants; index as i">-->
-<!--          <td>{{c2.id}}</td>-->
-<!--          <td>{{c2.ref}}</td>-->
-<!--          <td>{{c2.annee}}</td>-->
-<!--          <td>{{c2.mois}}</td>-->
-<!--          <td>{{c2.numeroSemaine}}</td>-->
-<!--          <td>{{c2.litre}}</td>-->
-<!--          <td>{{c2.prix}}</td>-->
-<!--          <td>{{c2.description}}</td>-->
-<!--          <td>{{c2.dateConsommationCarburant}}</td>-->
-<!--          <td>{{c2.voiture.id}}</td>-->
-<!--          <td><span (click)="consommationcarburantService.delete(i)"><i class="fa fa-trash btn btn-danger"></i></span></td>-->
-<!--          <td><span (click)="consommationcarburantService.update(i,c2)"><i class="fa fa-edit btn btn-warning"></i></span></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--      </table>-->
-<!--    </div>-->
-    <!--  <div class="card-footer"></div>-->
-<!--  </div>-->
+        <th>Id</th>
+        <th>ref</th>
+        <th>annee</th>
+        <th>mois</th>
+        <th>numero semaine</th>
+        <th>litre</th>
+        <th>prix</th>
+        <th>description</th>
+        <th>date consommation</th>
+        </thead>
+        <tbody >
+        <tr *ngFor="let c2 of consommationcarburants; index as i">
+          <td>{{c2.id}}</td>
+          <td>{{c2.ref}}</td>
+          <td>{{c2.annee}}</td>
+          <td>{{c2.mois}}</td>
+          <td>{{c2.numeroSemaine}}</td>
+          <td>{{c2.litre}}</td>
+          <td>{{c2.prix}}</td>
+          <td>{{c2.description}}</td>
+          <td>{{c2.dateConsommationCarburant}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+      <div class="card-footer"></div>
+  </div>
 
-
-  <!--  <table style="" class="table table-light">       -->
-<!--    <thead>-->
-<!--    <th>ID</th>-->
-<!--    <th>Reference</th>-->
-<!--    <th>matricule</th>-->
-<!--    <th>Date vidange</th>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <td></td>-->
-<!--    <td></td>-->
-<!--    <td></td>-->
-<!--    <td></td>-->
-
-<!--    </tbody>-->
-<!--  </table>-->
-  <!--  <div class="card-footer"></div>-->
-</div>
 

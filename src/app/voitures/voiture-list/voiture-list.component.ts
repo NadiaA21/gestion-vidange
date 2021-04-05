@@ -4,6 +4,7 @@ import {ModelevoitureService} from '../../controller/service/modelevoiture.servi
 import {Voiture} from '../../controller/model/voiture.model';
 import {VoitureService} from '../../controller/service/voiture.service';
 import {ConsommationcarburantService} from '../../controller/service/consommationcarburant.service';
+import {Consommationcarburant} from '../../controller/model/consommationcarburant.model';
 
 @Component({
   selector: 'app-voiture-list',
@@ -11,7 +12,8 @@ import {ConsommationcarburantService} from '../../controller/service/consommatio
   styleUrls: ['./voiture-list.component.css']
 })
 export class VoitureListComponent implements OnInit {
-   serverName = 0;
+   // @ts-ignore
+  idVoiture: number;
 
   get voitures(): Array<Voiture> {
     return this.voitureService.voitures;
@@ -22,14 +24,19 @@ export class VoitureListComponent implements OnInit {
   }
   // @ts-ignore
   num1: string;
-  // @ts-ignore
-  public consommationcarburantService: ConsommationcarburantService = new ConsommationcarburantService();
+  get consommationcarburants(): Array<Consommationcarburant> {
+    return this.voitureService.consommationcarburantService.consommationcarburants;
+  }
 
-  public delete(index: number){
-    this.voitureService.delete(index);
+  public deleteByRef(voitur: Voiture){
+    // voitur = this.voiture;
+    this.voitureService.deleteByRef(voitur);
   }
   public update(index: number, voiture: Voiture){
     this.voitureService.update(index, voiture);
+  }
+  get voiture(): Voiture {
+    return this.voitureService.voiture;
   }
 
   ngOnInit(): void {
@@ -38,5 +45,15 @@ export class VoitureListComponent implements OnInit {
   public  getValue() {
      this.num1 = ((document.getElementById('cccc45') as HTMLInputElement).value);
      return Number(this.num1);
+  }
+
+  findByVoitureId(voitur: Voiture) {
+    voitur = this.voiture;
+    this.voitureService.consommationcarburantService.findByVoitureId(voitur);
+  }
+
+  // tslint:disable-next-line:typedef
+  updateconsommation(i: number, c2: Consommationcarburant) {
+    this.voitureService.consommationcarburantService.update(i, c2);
   }
 }
