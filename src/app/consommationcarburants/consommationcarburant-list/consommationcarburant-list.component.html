@@ -28,8 +28,8 @@
         <td>{{c.description}}</td>
         <td>{{c.dateConsommationCarburant}}</td>
         <td>{{c.voiture.ref}}</td>
-        <td><span (click)="deleteByRef(c)"><i class="fa fa-trash btn btn-danger"></i></span></td>
-        <td><span (click)="update(i,c)"><i class="fa fa-edit btn btn-warning"></i></span></td>
+        <td><span (click)="deleteByRef(c)" ><i class="fa fa-trash btn btn-danger"></i></span></td>
+        <td><span (click)="update(i,c)" routerLink="consommation-create"><i class="fa fa-edit btn btn-warning"></i></span></td>
       </tr>
       </tbody>
     </table>

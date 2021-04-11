@@ -5,6 +5,7 @@ import {Voiture} from '../../controller/model/voiture.model';
 import {VoitureService} from '../../controller/service/voiture.service';
 import {ConsommationcarburantService} from '../../controller/service/consommationcarburant.service';
 import {Consommationcarburant} from '../../controller/model/consommationcarburant.model';
+import {VoitureCreateComponent} from '../voiture-create/voiture-create.component';
 
 @Component({
   selector: 'app-voiture-list',
@@ -47,9 +48,15 @@ export class VoitureListComponent implements OnInit {
      return Number(this.num1);
   }
 
+  // tslint:disable-next-line:typedef
   findByVoitureId(voitur: Voiture) {
     voitur = this.voiture;
     this.voitureService.consommationcarburantService.findByVoitureId(voitur);
+  }
+  // tslint:disable-next-line:typedef
+  findByVoitureRef(voitur1: Voiture) {
+    voitur1 = this.voiture;
+    this.voitureService.consommationcarburantService.findByVoitureRef(voitur1);
   }
 
   // tslint:disable-next-line:typedef

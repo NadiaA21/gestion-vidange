@@ -66,21 +66,17 @@ export class ConsommationcarburantService {
   public findByVoitureId(voiture: Voiture){
     this.http.get <Array<Consommationcarburant>>(this.urlBase + this.url + '/idvoiture/ ' + voiture.id).subscribe(
       data => {
+        console.log(voiture);
         this.consommationcarburants = data;
       } , error => {}
     );
   }
-
-
   // tslint:disable-next-line:typedef
-  public findByVoitureRef(ref: string){
-    alert(ref);
-    this.http.get<Array<Consommationcarburant>>(this.urlBase + this.url + '/VoitureRef/').subscribe(
+  public findByVoitureRef(voiture: Voiture){
+    this.http.get <Array<Consommationcarburant>>(this.urlBase + this.url + '/refvoiture/ ' + voiture.ref).subscribe(
       data => {
         this.consommationcarburants = data;
-      } , error => {
-        console.log( error);
-      }
+      } , error => {console.log(error); }
     );
   }
 

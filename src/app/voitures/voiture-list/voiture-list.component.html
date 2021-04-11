@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header">Listes des Voitures</div>
+  <div routerLinkActive="active" class="card-header">Listes des Voitures</div>
   <div class="card-body">
     <table id="montable" class="table  table-hover ">
       <thead CLASS="btn-dark">
@@ -22,8 +22,8 @@
         <td>{{c.dateDernierVidange}}</td>
         <td>{{c.model.code}}</td>
         <td>{{c.typeCarburant.code}}</td>
-        <td><span (click)="deleteByRef(c)"><i class="fa fa-trash btn btn-danger btn-lg"></i></span></td>
-        <td><span (click)="update(i,c)"><i class="fa fa-edit btn btn-warning btn-lg"></i></span></td>
+        <td><span (click)="deleteByRef(c)"><i  class="fa fa-trash btn btn-danger btn-lg"></i></span></td>
+        <td><span (click)="update(i,c)" routerLink="voiture-create"><i  class="fa fa-edit btn btn-warning btn-lg"></i></span></td>
       </tr>
       </tbody>
     </table>
@@ -31,8 +31,8 @@
   </div>
 
   <div class="h5"><span>Liste des Consommation de chaque voiture</span>
-    <input id="cccc45" class="serch " type="search" placeholder="Enter ID Voiture" aria-label="Search" [(ngModel)]="voiture.id">
-    <button class="btn btn-outline-success" type="submit" (click)="findByVoitureId(voiture)" >Search</button>
+    <input id="cccc45" class="serch " type="search" placeholder="Enter Ref Voiture" aria-label="Search" [(ngModel)]="voiture.ref">
+    <button class="btn btn-outline-success" type="submit" (click)="findByVoitureRef(voiture)" >Search</button>
   </div>
 <!--  <app-consommationcarburant-list></app-consommationcarburant-list>-->
 
@@ -49,6 +49,8 @@
         <th>prix</th>
         <th>description</th>
         <th>date consommation</th>
+        <th>Ref Voiture</th>
+
         </thead>
         <tbody >
         <tr *ngFor="let c2 of consommationcarburants; index as i">
@@ -61,6 +63,7 @@
           <td>{{c2.prix}}</td>
           <td>{{c2.description}}</td>
           <td>{{c2.dateConsommationCarburant}}</td>
+          <td>{{c2.voiture.ref}}</td>
         </tr>
         </tbody>
       </table>

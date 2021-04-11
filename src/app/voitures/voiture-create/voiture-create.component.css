@@ -8,3 +8,15 @@
   height: 20px;
   float: right;
 }
+.card-header{
+  border: #343a40 2px solid;
+  margin-left: 62px;
+  border-radius: 10px;
+}
+
+.card-body{
+  margin-left: 62px;
+  border-radius: 10px;
+  border: #ced4da 2px solid;
+
+}
