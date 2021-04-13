@@ -12,6 +12,7 @@ export class ConsommationcarburantCreateComponent implements OnInit {
   constructor(private consommationcarburantService: ConsommationcarburantService) { }
 
 
+
   ngOnInit(): void {
   }
 

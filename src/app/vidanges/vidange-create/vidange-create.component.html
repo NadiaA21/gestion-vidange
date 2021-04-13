@@ -1,4 +1,33 @@
-<div class="container">
-  <div class="row"><app-vidange-create></app-vidange-create></div>
-  <div class="row"><app-vidange-list></app-vidange-list></div>
+
+<div class="card">
+  <div class="card-header ">Ajout de Vidange</div>
+  <div class="card-body ">
+    <div class="from-group ">
+      <!--      <div class="form-group">-->
+      <!--        <label>Id</label> <input type="number" class="form-control" [(ngModel)]="voiture.id">-->
+      <!--      </div>-->
+      <div class="form-group">
+        <label>Ref</label> <input id="cccc45" type="text" class="form-control btn-outline-info" [(ngModel)]="vidange.ref" >
+
+      </div>
+      <div class="form-group">
+        <label>Matricule</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="vidange.dateVidange">
+      </div>
+      <div class="form-group">
+        <label>modele Code</label> <input type="number" class="form-control btn-outline-info" [(ngModel)]="vidange.kilomtrageActuel">
+      </div><div class="form-group">
+      <label>DateDernierVidange</label> <input type="number" class="form-control btn-outline-info" [(ngModel)]="vidange.kilometrageVidangeSuivant">
+    </div>
+      <div class="form-group">
+        <label>typeCarburant Code</label> <input type="number" class="form-control btn-outline-info" [(ngModel)]="vidange.montant">
+      </div>
+      <div class="form-group">
+        <label>typeCarburant Code</label> <input type="txt" class="form-control btn-outline-info" [(ngModel)]="vidange.voiture.ref">
+      </div>
+
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-block btn-outline-primary" (click)="save()">Valider</button>
+  </div>
 </div>
+
