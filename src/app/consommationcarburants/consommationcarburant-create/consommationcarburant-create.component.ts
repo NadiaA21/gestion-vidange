@@ -11,14 +11,7 @@ export class ConsommationcarburantCreateComponent implements OnInit {
 
   constructor(private consommationcarburantService: ConsommationcarburantService) { }
 
-  get consommationcarburant(): Consommationcarburant {
 
-    return this.consommationcarburantService.consommationcarburant;
-  }
-
-  public save(){
-    this.consommationcarburantService.save();
-  }
 
   ngOnInit(): void {
   }
