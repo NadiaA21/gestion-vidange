@@ -14,9 +14,7 @@ export class VidangeListComponent implements OnInit {
   private voiture: Voiture;
   constructor(private vidangeService: VidangeService) { }
 
-  ngOnInit(): void {
-    this.vidangeService.findAll();
-  }
+
   public deleteByRef(vidange1: Vidange){
     this.vidangeService.deleteByRef(vidange1);
   }
@@ -26,5 +24,7 @@ export class VidangeListComponent implements OnInit {
   get vidanges(): Array<Vidange> {
     return this.vidangeService.vidanges;
   }
-
+  ngOnInit(): void {
+    this.vidangeService.findAll();
+  }
 }

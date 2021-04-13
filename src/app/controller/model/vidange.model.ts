@@ -1,17 +1,18 @@
 import {Voiture} from './voiture.model';
+import {Typevidange} from './typevidange.model';
 
 export class Vidange {
   // @ts-ignore
-  public id : number;
+  public id: number;
   // @ts-ignore
-  public  ref : string;
+  public  ref: string;
   // @ts-ignore
-  public  dateVidange: string;
+  public  dateVidange: Date;
   // @ts-ignore
-  public kilomtrageActuel : number;
+  public kilomtrageActuel: number;
   // @ts-ignore
-  public kilometrageVidangeSuivant : number;
+  public kilometrageVidangeSuivant: number;
   // @ts-ignore
-  public  montant : string;
+  public  montant: number;
   public  voiture = new Voiture();
 }

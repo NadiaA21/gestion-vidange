@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Modelevoiture} from '../../controller/model/modelevoiture.model';
-import {ModelevoitureService} from '../../controller/service/modelevoiture.service';
 import {Voiture} from '../../controller/model/voiture.model';
 import {VoitureService} from '../../controller/service/voiture.service';
-import {ConsommationcarburantService} from '../../controller/service/consommationcarburant.service';
-import {Consommationcarburant} from '../../controller/model/consommationcarburant.model';
-import {VoitureCreateComponent} from '../voiture-create/voiture-create.component';
+import {Vidange} from '../../controller/model/vidange.model';
+
 
 @Component({
   selector: 'app-voiture-list',
@@ -25,8 +22,8 @@ export class VoitureListComponent implements OnInit {
   }
   // @ts-ignore
   num1: string;
-  get consommationcarburants(): Array<Consommationcarburant> {
-    return this.voitureService.consommationcarburantService.consommationcarburants;
+  get vidanges(): Array<Vidange> {
+    return this.voitureService.vidangeService.vidanges;
   }
 
   public deleteByRef(voitur: Voiture){
@@ -47,20 +44,13 @@ export class VoitureListComponent implements OnInit {
      this.num1 = ((document.getElementById('cccc45') as HTMLInputElement).value);
      return Number(this.num1);
   }
-
-  // tslint:disable-next-line:typedef
-  findByVoitureId(voitur: Voiture) {
-    voitur = this.voiture;
-    this.voitureService.consommationcarburantService.findByVoitureId(voitur);
-  }
   // tslint:disable-next-line:typedef
   findByVoitureRef(voitur1: Voiture) {
-    voitur1 = this.voiture;
-    this.voitureService.consommationcarburantService.findByVoitureRef(voitur1);
+    this.voitureService.vidangeService.findByVoitureRef(voitur1);
   }
 
   // tslint:disable-next-line:typedef
-  updateconsommation(i: number, c2: Consommationcarburant) {
-    this.voitureService.consommationcarburantService.update(i, c2);
+  updatevidange(i: number, c2: Vidange) {
+    this.voitureService.vidangeService.update(i, c2);
   }
 }

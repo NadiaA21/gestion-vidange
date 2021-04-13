@@ -3,31 +3,30 @@
   <div class="card-header ">Ajout de Vidange</div>
   <div class="card-body ">
     <div class="from-group ">
-      <!--      <div class="form-group">-->
-      <!--        <label>Id</label> <input type="number" class="form-control" [(ngModel)]="voiture.id">-->
-      <!--      </div>-->
+
       <div class="form-group">
-        <label>Ref</label> <input id="cccc45" type="text" class="form-control btn-outline-info" [(ngModel)]="vidange.ref" >
+        <label>Ref</label> <input id="cccc45" type="text" class="form-control " [(ngModel)]="vidange.ref" >
 
       </div>
       <div class="form-group">
-        <label>Matricule</label> <input type="text" class="form-control btn-outline-info" [(ngModel)]="vidange.dateVidange">
+        <label>Date vidange</label> <input type="date" class="form-control " [(ngModel)]="vidange.dateVidange">
       </div>
       <div class="form-group">
-        <label>modele Code</label> <input type="number" class="form-control btn-outline-info" [(ngModel)]="vidange.kilomtrageActuel">
+        <label>Kilometrage actuel</label> <input type="number" class="form-control " [(ngModel)]="vidange.kilomtrageActuel">
       </div><div class="form-group">
-      <label>DateDernierVidange</label> <input type="number" class="form-control btn-outline-info" [(ngModel)]="vidange.kilometrageVidangeSuivant">
+      <label>Kilometrage vidange suivant</label> <input type="number" class="form-control " [(ngModel)]="vidange.kilometrageVidangeSuivant">
     </div>
       <div class="form-group">
-        <label>typeCarburant Code</label> <input type="number" class="form-control btn-outline-info" [(ngModel)]="vidange.montant">
+        <label>Montant</label> <input type="number" class="form-control " [(ngModel)]="vidange.montant">
       </div>
       <div class="form-group">
-        <label>typeCarburant Code</label> <input type="txt" class="form-control btn-outline-info" [(ngModel)]="vidange.voiture.ref">
+        <label>ID voiture</label> <input type="txt" class="form-control " [(ngModel)]="vidange.voiture.ref">
       </div>
 
   </div>
   <div class="card-footer">
-    <button class="btn btn-block btn-outline-primary" (click)="save()">Valider</button>
+    <button class="btn btn-block btn-outline-primary" (click)="save()" routerLink="vidange-list">Valider</button>
   </div>
+</div>
 </div>
 

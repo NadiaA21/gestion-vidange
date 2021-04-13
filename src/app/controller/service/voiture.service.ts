@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Voiture} from '../model/voiture.model';
-import {ConsommationcarburantService} from './consommationcarburant.service';
+import {VidangeService} from './vidange.service';
+import {Vidange} from '../model/vidange.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VoitureService {
-  private urlBase = 'http://localhost:8036';
+  private urlBase = 'http://localhost:8090';
   private url = '/voiture/voiture';
   private _voiture: Voiture = new Voiture();
   private _voitures: Array<Voiture> = [];
   // tslint:disable-next-line:variable-name
   _index = 0;
-  public consommationcarburantService: ConsommationcarburantService = new ConsommationcarburantService(this.http);
+  public vidangeService: VidangeService = new VidangeService(this.http);
   public update(index: number, voiture: Voiture) {
     this.voiture = this.clone(voiture);
     this._index = index;
@@ -76,20 +77,9 @@ export class VoitureService {
     );
   }
 
-  get voitures(): Array<Voiture> {
-    if (this._voiture == null){
-      this._voiture = new Voiture();
-    }
-    return this._voitures;
-  }
-
-  set voitures(value: Array<Voiture>) {
-    this._voitures = value;
-  }
-
   get voiture(): Voiture {
-    if (this._voitures == null){
-      this._voitures =  new Array<Voiture>();
+    if (this._voiture == null) {
+      this._voiture = new Voiture();
     }
     return this._voiture;
   }
@@ -97,7 +87,19 @@ export class VoitureService {
   set voiture(value: Voiture) {
     this._voiture = value;
   }
-  // tslint:disable-next-line:typedef
+
+  get voitures(): Array<Voiture> {
+    if (this._voitures == null) {
+      this._voitures = new Array<Voiture>();
+    }
+    return this._voitures;
+  }
+
+  set voitures(value: Array<Voiture>) {
+    this._voitures= value;
+  }
+
+// tslint:disable-next-line:typedef
   private clone(voiture: Voiture) {
     let myClone = new Voiture();
     myClone.id = voiture.id;
@@ -105,7 +107,7 @@ export class VoitureService {
     myClone.matricule = voiture.matricule;
     myClone.typeCarburant.code = voiture.typeCarburant.code;
     myClone.dateDernierVidange = voiture.dateDernierVidange;
-    myClone.consommationCarburant = voiture.consommationCarburant;
+    myClone.vidange = voiture.vidange;
     myClone.model.code = voiture.model.code;
 
     return myClone;

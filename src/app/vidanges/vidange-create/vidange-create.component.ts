@@ -14,7 +14,8 @@ export class VidangeCreateComponent implements OnInit {
   constructor(private vidangeService: VidangeService) {
   }
   public save(){
-   return this.vidangeService.save();
+    alert('in save');
+    return this.vidangeService.save();
   }
   get vidange(): Vidange {
     return this.vidangeService.vidange;

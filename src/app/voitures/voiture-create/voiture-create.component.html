@@ -21,56 +21,42 @@
 
       </div>
    <div class="form-group col-md-10">
-    <button class="btn btn-block btn-outline-primary" (click)="save()">Valider</button>
+    <button class="btn btn-block btn-outline-primary" (click)="save()" routerLink="voiture-list">Valider</button>
     </div>
-      <div class="form-group col-md-10">
-    <button class="btn btn-block btn-outline-primary" routerLink="consommation-create">consommation</button>
-    </div>
+
 
 
     </div>
   </div>
   <div class="card-footer col-md-10"></div>
   <div class="card">
-    <div class="card-header ">Ajout de Consommation carburant</div>
+    <div class="card-header ">Ajout de vidange</div>
 
     <div class="card-body ">
       <div class="from-group">
         <div class="form-group">
-          <label>Ref</label> <input type="text" class="form-control " [(ngModel)]="consommationcarburant.ref">
+          <label>Ref</label> <input type="text" class="form-control " [(ngModel)]="vidange.ref">
         </div>
         <div class="form-group">
-          <label>Date</label> <input type="date" class="form-control " [(ngModel)]="consommationcarburant.dateConsommationCarburant">
+          <label>Date</label> <input type="date" class="form-control " [(ngModel)]="vidange.dateVidange">
         </div>
         <div class="form-group">
-          <label>Description</label> <input type="text" class="form-control " [(ngModel)]="consommationcarburant.description">
+          <label>Kilometrage Actuel</label> <input type="text" class="form-control " [(ngModel)]="vidange.kilomtrageActuel">
 
         </div>
         <div class="form-group">
-          <label>Litre</label> <input type="text" class="form-control " [(ngModel)]="consommationcarburant.litre">
+          <label>Kilometrage suivant</label> <input type="text" class="form-control " [(ngModel)]="vidange.kilometrageVidangeSuivant">
 
         </div>
         <div class="form-group">
-          <label>Annee</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburant.annee">
-
-        </div>
-        <div class="form-group">
-          <label>Mois</label> <input type="text" class="form-control " [(ngModel)]="consommationcarburant.mois">
-
-        </div>
-        <div class="form-group">
-          <label>Numero de semaine</label> <input type="text" class="form-control" [(ngModel)]="consommationcarburant.numeroSemaine">
-
-        </div>
-        <div class="form-group">
-          <label>Prix</label> <input type="text" class="form-control " [(ngModel)]="consommationcarburant.prix">
-        </div>
+          <label>Montant</label> <input type="text" class="form-control" [(ngModel)]="vidange.montant">
       </div>
     </div>
     <div class="card-footer">
-      <button class="btn btn-block btn-lg btn-outline-dark" (click)="addConsommation()">+</button>
+      <button class="btn btn-block btn-lg btn-outline-dark" (click)="addVidange()">+</button>
     </div>
 
   </div>
+</div>
 </div>
 

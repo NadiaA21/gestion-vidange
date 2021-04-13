@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {VoitureService} from '../../controller/service/voiture.service';
 import {Voiture} from '../../controller/model/voiture.model';
 import {Consommationcarburant} from '../../controller/model/consommationcarburant.model';
+import {Vidange} from '../../controller/model/vidange.model';
 
 
 @Component({
@@ -11,8 +12,7 @@ import {Consommationcarburant} from '../../controller/model/consommationcarburan
   styleUrls: ['./voiture-create.component.css']
 })
 export class VoitureCreateComponent implements OnInit {
-  // @ts-ignore
-  private num1: string;
+
   private getRef: string =  String();
 
 
@@ -26,18 +26,17 @@ export class VoitureCreateComponent implements OnInit {
     this.voitureService.save();
   }
   public  getValue(): string {
-    this.num1 = ((document.getElementById('cccc45') as HTMLInputElement).value);
-    return (this.num1);
+    this.getRef = ((document.getElementById('cccc45') as HTMLInputElement).value);
+    return (this.getRef);
   }
 
-  get consommationcarburant(): Consommationcarburant {
-    return  this.voitureService.consommationcarburantService.consommationcarburant;
+  get vidange(): Vidange {
+    return  this.voitureService.vidangeService.vidange;
   }
-  public addConsommation(){
-    this.consommationcarburant.voiture.ref = this.getValue();
-    this.voitureService.consommationcarburantService.save();
+  public addVidange(){
+    this.vidange.voiture.ref = this.getRef;
+    this.voitureService.vidangeService.save();
   }
-
   ngOnInit(): void {
   }
 }

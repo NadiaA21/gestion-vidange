@@ -30,11 +30,10 @@
 
   </div>
 
-  <div class="h5"><span>Liste des Consommation de chaque voiture</span>
+  <div class="h5"><span>Liste des vidanges de chaque voiture</span>
     <input id="cccc45" class="serch " type="search" placeholder="Enter Ref Voiture" aria-label="Search" [(ngModel)]="voiture.ref">
     <button class="btn btn-outline-success" type="submit" (click)="findByVoitureRef(voiture)" >Search</button>
   </div>
-<!--  <app-consommationcarburant-list></app-consommationcarburant-list>-->
 
     <div class="card-body">
       <table class="table  table-hover ">
@@ -42,27 +41,22 @@
 
         <th>Id</th>
         <th>ref</th>
-        <th>annee</th>
-        <th>mois</th>
-        <th>numero semaine</th>
-        <th>litre</th>
-        <th>prix</th>
-        <th>description</th>
-        <th>date consommation</th>
-        <th>Ref Voiture</th>
+        <th>date Vidange</th>
+        <th>kilometrage actuel</th>
+        <th>kilometrage suivant</th>
+        <th>Montant</th>
+        <th>voiture ref</th>
+        <th></th>
 
         </thead>
         <tbody >
-        <tr *ngFor="let c2 of consommationcarburants; index as i">
+        <tr *ngFor="let c2 of vidanges; index as i">
           <td>{{c2.id}}</td>
           <td>{{c2.ref}}</td>
-          <td>{{c2.annee}}</td>
-          <td>{{c2.mois}}</td>
-          <td>{{c2.numeroSemaine}}</td>
-          <td>{{c2.litre}}</td>
-          <td>{{c2.prix}}</td>
-          <td>{{c2.description}}</td>
-          <td>{{c2.dateConsommationCarburant}}</td>
+          <td>{{c2.dateVidange}}</td>
+          <td>{{c2.kilomtrageActuel}}</td>
+          <td>{{c2.kilometrageVidangeSuivant}}</td>
+          <td>{{c2.montant}}</td>
           <td>{{c2.voiture.ref}}</td>
         </tr>
         </tbody>

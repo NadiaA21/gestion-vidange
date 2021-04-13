@@ -18,7 +18,12 @@ const routes: Routes = [
   {path: 'voiture-create' , component : components[0]},
   {path: 'voiture-list' , component : components[1]},
   {path: 'vidange-create' , component : components[2]},
+  {path: 'vidange-create/vidange-list' , component : components[3]},
   {path: 'vidange-list' , component : components[3]},
+  {path: 'vidange-list/vidange-create' , component : components[2]},
+  {path: 'vidange-list/vidange-create/vidange-list' , component : components[3]},
+  {path: 'voiture-list/voiture-create' , component : components[0]},
+  {path: 'voiture-list/voiture-create/voiture-list' , component : components[1]},
   {path: '**' , component : PageNotFoundedComponent}
 ];
 

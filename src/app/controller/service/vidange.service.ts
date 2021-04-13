@@ -8,7 +8,7 @@ import {Consommationcarburant} from '../model/consommationcarburant.model';
   providedIn: 'root'
 })
 export class VidangeService {
-  private urlBase = 'http://localhost:8036';
+  private urlBase = 'http://localhost:8090';
   private url = '/vidange/vidange';
   // tslint:disable-next-line:new-parens variable-name
   private _vidange: Vidange = new Vidange;
@@ -30,14 +30,14 @@ export class VidangeService {
     if (this.vidange.id == null) {
       this.http.post<number>(this.urlBase + this.url + '/', this.vidange).subscribe(
         data => {
-          if (data == -4) {
+          alert(data);
+          if (data == -1) {
             alert('vidange existe deja !' + data);
           } else if (data == 1) {
             this.vidanges.push(this.clone(this.vidange));
             this.findAll();
-          } else if (data == -2) {
-            alert('data = 0');
           }
+          alert('no ss' + data);
         });
     } else {
       this.http.post<number>(this.urlBase + this.url + '/', this.vidange).subscribe(
@@ -46,8 +46,8 @@ export class VidangeService {
           this.findAll();
         });
     }
-    // // @ts-ignore
-    // this.vidange = null;
+    // @ts-ignore
+    this.vidange = null;
   }
 
   constructor(private http: HttpClient) {
@@ -57,6 +57,7 @@ export class VidangeService {
   public findAll() {
     this.http.get<Array<Vidange>>(this.urlBase + this.url + '/').subscribe(
       data => {
+        console.log(data);
         this.vidanges = data;
       }, error => {
         alert('error in find All');
@@ -65,19 +66,8 @@ export class VidangeService {
   }
 
   // tslint:disable-next-line:typedef
-  public findByVoitureId(voiture: Voiture) {
-    this.http.get <Array<Vidange>>(this.urlBase + this.url + '/idvoiture/ ' + voiture.id).subscribe(
-      data => {
-        console.log(voiture);
-        this.vidanges = data;
-      }, error => {
-      }
-    );
-  }
-
-  // tslint:disable-next-line:typedef
   public findByVoitureRef(voiture: Voiture) {
-    this.http.get <Array<Vidange>>(this.urlBase + this.url + '/refvoiture/ ' + voiture.ref).subscribe(
+    this.http.get <Array<Vidange>>(this.urlBase + this.url + '/voitureref/' + voiture.ref).subscribe(
       data => {
         this.vidanges = data;
       }, error => {
