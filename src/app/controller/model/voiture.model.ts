@@ -1,6 +1,7 @@
 import {Consommationcarburant} from './consommationcarburant.model';
 import {Typecarburant} from './typecarburant.model';
 import {Modelevoiture} from './modelevoiture.model';
+import {Vidange} from './vidange.model';
 
 export class Voiture {
   public id: number | undefined;
@@ -8,7 +9,7 @@ export class Voiture {
   public matricule: string | undefined;
   public dateDernierVidange: string | undefined;
   public typeCarburant = new Typecarburant();
-  public consommationCarburant = new Array<Consommationcarburant>();
+  public vidange = new Array<Vidange>();
   public model = new Modelevoiture();
 }
 

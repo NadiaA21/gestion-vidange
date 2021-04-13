@@ -9,24 +9,10 @@ import {Voiture} from '../../controller/model/voiture.model';
   styleUrls: ['./consommationcarburant-list.component.css']
 })
 export class ConsommationcarburantListComponent implements OnInit {
-  // @ts-ignore
-  private voiture: Voiture;
-
-  get consommationcarburants(): Array<Consommationcarburant> {
-    return this.consommationcarburantService.consommationcarburants;
-  }
-
   constructor(private consommationcarburantService: ConsommationcarburantService) {
-  }
-  public deleteByRef(consommation: Consommationcarburant){
-    this.consommationcarburantService.deleteByRef(consommation);
-  }
-  public update(index: number, consommation: Consommationcarburant){
-    this.consommationcarburantService.update(index, consommation);
   }
 
   ngOnInit(): void {
-    this.consommationcarburantService.findAll();
   }
 
 }
